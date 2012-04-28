@@ -1,0 +1,12 @@
+{application, erlmpd,
+ [
+  {description, "Client library for communicating with MPD"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { erlmpd_app, []}},
+  {env, []}
+ ]}.
