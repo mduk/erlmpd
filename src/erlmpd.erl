@@ -52,9 +52,11 @@
 %%==================================================================
 %% Data types
 %%==================================================================
-%% @type mpd_conn() = #mpd_conn{port=port(), version=string()}.
-%% @type mpd_error() = #mpd_error{errorid=string(), position=string(), description=string(), reason=string()}.
-%% @type tag() = artist | albumartist | album | title | track | genre | disc | date
+-type mpd_conn() :: #mpd_conn{}.
+-type mpd_error() :: #mpd_error{}.
+-type tag() :: artist | albumartist | album | title | track | genre | disc | date.
+
+-export_type([mpd_conn/0, mpd_error/0, tag/0]).
 
 %%===================================================================
 %% Exported functions not part of the MPD API

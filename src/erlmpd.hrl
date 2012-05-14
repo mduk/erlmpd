@@ -1,2 +1,3 @@
--record(mpd_conn, {port, version}).
--record(mpd_error, {errorid, position, description, reason}).
+-record(mpd_conn, {port :: port(), version :: string()}).
+-record(mpd_error, {errorid :: string(), position :: string(),
+        description :: string(), reason :: string()}).
