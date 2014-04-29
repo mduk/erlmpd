@@ -30,7 +30,7 @@
          rename/3, rm/2, save/2]).
 
 %% The music database
--export([count/3, find/3, list/2, list/3, listall/1, listall/2, listallinfo/1,
+-export([count/3, find/3, findadd/3, list/2, list/3, listall/1, listall/2, listallinfo/1,
          listallinfo/2, lsinfo/1, lsinfo/2, search/3, update/1, update/2]).
 
 %% Stickers (not currently working)
@@ -866,6 +866,16 @@ count(C=#mpd_conn{}, Tag, X) ->
 %%-------------------------------------------------------------------
 find(C=#mpd_conn{}, Tag, X) ->
     parse_songs(command(C, "find", [atom_to_list(Tag), X])).
+
+%%-------------------------------------------------------------------
+%% @spec (mpd_conn(), Tag::tag(), X::string()) -> list()
+%% @doc
+%% Same as find, except adds the results to the end of the current
+%% playlist instead of returning them.
+%% @end
+%%-------------------------------------------------------------------
+findadd(C=#mpd_conn{}, Tag, X) ->
+	parse_none(command(C, "findadd", [atom_to_list(Tag), X])).
 
 %%-------------------------------------------------------------------
 %% @spec (mpd_conn(), Tag::tag()) -> list()
