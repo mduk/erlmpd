@@ -30,7 +30,7 @@
          rename/3, rm/2, save/2]).
 
 %% The music database
--export([count/3, find/3, findadd/3, list/2, list/3, listall/1, listall/2, listallinfo/1,
+-export([count/3, find/3, findadd/3, list/2, list/3, list/4, listall/1, listall/2, listallinfo/1,
          listallinfo/2, lsinfo/1, lsinfo/2, search/3, update/1, update/2]).
 
 %% Stickers (not currently working)
@@ -896,6 +896,16 @@ list(C=#mpd_conn{}, Tag) ->
 %%-------------------------------------------------------------------
 list(C=#mpd_conn{}, album, Artist) ->
     get_all('Album', command(C, "list album", [Artist])).
+
+%%-------------------------------------------------------------------
+%% @spec (mpd_conn(), album, Artist::string()) -> list()
+%% @doc
+%% Lists all tags of type album. Artist specifies the artist to list
+%% albums by.
+%% @end
+%%-------------------------------------------------------------------
+list(C=#mpd_conn{}, album, artist, Artist) ->
+    get_all('Album', command(C, "list album artist", [Artist])).
 
 %%-------------------------------------------------------------------
 %% @spec (mpd_conn()) -> list()
